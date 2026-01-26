@@ -1,31 +1,81 @@
-# {{PLUGIN_NAME}}
+# Obsidian Plugin Template
 
-{{PLUGIN_DESCRIPTION}}
+A template for creating Obsidian plugins with modern tooling and best practices.
 
-## Features
+## What's Included
 
-- Feature 1
-- Feature 2
+- **TypeScript** with strict mode enabled
+- **esbuild** for fast builds
+- **ESLint** with flat config format
+- **Prettier** for code formatting
+- **Jest** for testing with ts-jest
+- **Nix flakes** for reproducible development environment
+- **GitHub Actions** for CI/CD (build, test, release)
+- **Dependabot** for automated dependency updates
+- **AI agent guidelines** (CLAUDE.md) for AI-assisted development
 
-## Installation
+## Getting Started
 
-### From Obsidian Community Plugins
+### 1. Create Your Repository
 
-1. Open Obsidian Settings
-2. Go to Community Plugins
-3. Search for "{{PLUGIN_NAME}}"
-4. Click Install, then Enable
+Clone or download this template:
 
-### Manual Installation
+```bash
+git clone https://github.com/forketyfork/obsidian-plugin-template.git my-plugin
+cd my-plugin
+rm -rf .git
+```
 
-1. Download the latest release from the [Releases](../../releases) page
-2. Extract the files to your vault's `.obsidian/plugins/{{PLUGIN_ID}}/` folder
-3. Reload Obsidian
-4. Enable the plugin in Settings > Community Plugins
+### 2. Configure the Template
 
-## Usage
+Run the interactive setup script:
 
-TODO: Add usage instructions
+```bash
+./setup.sh
+```
+
+The script prompts for:
+- **Plugin ID**: Unique identifier (e.g., `my-plugin`)
+- **Plugin name**: Human-readable name (e.g., `My Plugin`)
+- **Plugin description**: Short description of what it does
+- **CSS prefix**: Prefix for CSS classes (defaults to plugin ID)
+- **Author name**: Your name
+- **Author URL**: Your website or GitHub profile
+- **Copyright year**: Year for LICENSE file
+
+### 3. Initialize Your Project
+
+```bash
+rm setup.sh README.md
+mv PLUGIN_README.md README.md
+yarn install
+yarn dev
+git init && git add . && git commit -m 'Initial commit'
+```
+
+## Template Structure
+
+```
+├── .github/
+│   ├── workflows/
+│   │   ├── build.yml          # CI build on push/PR
+│   │   ├── publish.yml        # Release workflow (triggered by tags)
+│   │   └── junie.yml          # JetBrains Junie AI integration (optional)
+│   └── dependabot.yml         # Automated dependency updates
+├── src/
+│   ├── main.ts                # Plugin entry point
+│   ├── styles.src.css         # Source CSS (minified to styles.css)
+│   ├── __tests__/             # Test files
+│   └── __mocks__/             # Mock files for testing
+├── CLAUDE.md                  # AI agent guidelines
+├── setup.sh                   # Interactive setup script
+├── manifest.json              # Obsidian plugin manifest
+├── versions.json              # Version compatibility mapping
+├── package.json               # Dependencies and scripts
+├── flake.nix                  # Nix development environment
+├── justfile                   # Task runner commands
+└── ...config files            # ESLint, Prettier, TypeScript, Jest
+```
 
 ## Development
 
@@ -34,35 +84,15 @@ TODO: Add usage instructions
 - Node.js 24.x
 - Yarn package manager
 
-### Using Nix (Recommended)
-
-If you have Nix installed with flakes enabled:
+Or use Nix:
 
 ```bash
-# Enter the development shell
 nix develop
-
-# Or if using direnv
+# or with direnv
 direnv allow
 ```
 
-### Setup
-
-```bash
-# Install dependencies
-yarn install
-
-# Development build
-yarn dev
-
-# Development build with watch mode
-yarn dev:watch
-
-# Full production build (includes typecheck, lint, format, and tests)
-yarn build
-```
-
-### Available Commands
+### Commands
 
 | Command | Description |
 |---------|-------------|
@@ -77,62 +107,35 @@ yarn build
 | `yarn test:dev` | Build and run tests |
 | `yarn coverage` | Run tests with coverage report |
 
-### Project Structure
+### Release Process
 
-```
-├── src/
-│   ├── main.ts              # Plugin entry point
-│   ├── styles.src.css       # Source CSS (minified to styles.css)
-│   ├── __tests__/           # Test files
-│   └── __mocks__/           # Mock files for testing
-├── manifest.json            # Obsidian plugin manifest
-├── versions.json            # Version compatibility mapping
-├── CLAUDE.md               # AI agent guidelines
-└── ...config files
-```
+1. Update version: `yarn version --patch|minor|major --no-git-tag-version`
+2. Commit and push to a release branch
+3. Create a tag matching the version
+4. GitHub Actions creates a draft release with artifacts
 
-### Creating a New Plugin from This Template
+## CI/CD Workflows
 
-#### Quick Setup (Recommended)
+### build.yml
+Triggers on push to main and PRs. Runs typecheck, lint, format check, build, and tests.
 
-Run the interactive setup script:
+### publish.yml
+Triggers on tag push. Builds the plugin and creates a draft GitHub release with `main.js`, `manifest.json`, `styles.css`, and archives.
 
-```bash
-./setup.sh
-```
+### junie.yml
+Integration for JetBrains Junie AI assistant. Remove if not using Junie.
 
-The script will prompt you for:
-- **Plugin ID**: Unique identifier (e.g., `my-plugin`)
-- **Plugin name**: Human-readable name (e.g., `My Plugin`)
-- **Plugin description**: Short description of what it does
-- **CSS prefix**: Prefix for CSS classes (defaults to plugin ID)
-- **Author name**: Your name
-- **Author URL**: Your website or GitHub profile
-- **Copyright year**: Year for LICENSE file
+## Placeholders Reference
 
-After setup:
-1. Delete the setup script: `rm setup.sh`
-2. Install dependencies: `yarn install`
-3. Build the plugin: `yarn dev`
-4. Initialize git: `git init && git add . && git commit -m 'Initial commit'`
-
-#### Manual Setup
-
-If you prefer to configure manually, replace these placeholders:
-
-| Placeholder | Example | Files |
-|-------------|---------|-------|
-| `{{PLUGIN_ID}}` | `my-plugin` | package.json, manifest.json, publish.yml, README.md |
-| `{{PLUGIN_NAME}}` | `My Plugin` | manifest.json, README.md |
-| `{{PLUGIN_DESCRIPTION}}` | `A plugin that does X` | package.json, manifest.json, README.md |
-| `{{PLUGIN_PREFIX}}` | `my-plugin` | CLAUDE.md, src/styles.src.css |
-| `{{AUTHOR}}` | `Your Name` | package.json, manifest.json, LICENSE |
-| `{{AUTHOR_URL}}` | `https://github.com/username` | manifest.json |
-| `{{YEAR}}` | `2026` | LICENSE |
-
-Also update:
-- `flake.nix` description
-- `justfile` header comment
+| Placeholder | Description | Files |
+|-------------|-------------|-------|
+| `{{PLUGIN_ID}}` | Plugin identifier | package.json, manifest.json, publish.yml, PLUGIN_README.md |
+| `{{PLUGIN_NAME}}` | Human-readable name | manifest.json, PLUGIN_README.md |
+| `{{PLUGIN_DESCRIPTION}}` | Short description | package.json, manifest.json, PLUGIN_README.md |
+| `{{PLUGIN_PREFIX}}` | CSS class prefix | CLAUDE.md, src/styles.src.css |
+| `{{AUTHOR}}` | Author's name | package.json, manifest.json, LICENSE |
+| `{{AUTHOR_URL}}` | Author's URL | manifest.json |
+| `{{YEAR}}` | Copyright year | LICENSE |
 
 ## License
 
