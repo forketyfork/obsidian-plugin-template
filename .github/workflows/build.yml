@@ -11,6 +11,8 @@ on:
 
 jobs:
   build:
+    # Skip for the template repository itself
+    if: github.repository != 'forketyfork/obsidian-plugin-template'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
