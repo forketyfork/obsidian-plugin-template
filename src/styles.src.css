@@ -1,0 +1,14 @@
+/*
+ * Plugin styles
+ * All CSS classes should use the {{PLUGIN_PREFIX}}- prefix to avoid conflicts.
+ */
+
+/* Example styles - replace with your own
+.{{PLUGIN_PREFIX}}-container {
+    padding: 1rem;
+}
+
+.{{PLUGIN_PREFIX}}-button {
+    margin: 0.5rem 0;
+}
+*/

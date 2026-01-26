@@ -1,0 +1,46 @@
+name: Release Obsidian plugin
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24.x"
+      - name: Build plugin
+        run: |
+          yarn install
+          yarn build
+      - name: Fail if build modified files
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Build modified files. Commit the output of 'yarn build'."
+            git status --porcelain
+            exit 1
+          fi
+      - name: Create plugin archives
+        run: |
+          PLUGIN_NAME="obsidian-{{PLUGIN_ID}}"
+          mkdir -p "$PLUGIN_NAME"
+          cp main.js manifest.json styles.css "$PLUGIN_NAME/"
+          zip -r "$PLUGIN_NAME.zip" "$PLUGIN_NAME/"
+          tar -czf "$PLUGIN_NAME.tar.gz" "$PLUGIN_NAME/"
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag="${GITHUB_REF#refs/tags/}"
+          PLUGIN_NAME="obsidian-{{PLUGIN_ID}}"
+
+          gh release create "$tag" \
+            --title="$tag" \
+            --draft \
+            main.js manifest.json styles.css "$PLUGIN_NAME.zip" "$PLUGIN_NAME.tar.gz"
