@@ -110,7 +110,7 @@ direnv allow
 
 ### Release Process
 
-1. Update version: `yarn version --patch|minor|major --no-git-tag-version`
+1. Update version: `yarn version --immediate <patch|minor|major|version>` then `yarn run version`
 2. Commit and push to a release branch
 3. Create a tag matching the version
 4. GitHub Actions creates a draft release with artifacts
