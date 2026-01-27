@@ -100,6 +100,7 @@ direnv allow
 | `yarn dev:watch` | Development build with file watching |
 | `yarn prod` | Production build (minified) |
 | `yarn build` | Full build with typecheck, lint, format, and tests |
+| `yarn ci` | Install dependencies with a frozen lockfile |
 | `yarn typecheck` | TypeScript type checking |
 | `yarn lint` | ESLint code checking |
 | `yarn format` | Prettier code formatting |
