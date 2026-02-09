@@ -35,6 +35,7 @@ Run the interactive setup script:
 ```
 
 The script prompts for:
+
 - **Plugin ID**: Unique identifier (e.g., `my-plugin`)
 - **Plugin name**: Human-readable name (e.g., `My Plugin`)
 - **Plugin description**: Short description of what it does
@@ -94,19 +95,19 @@ direnv allow
 
 ### Commands
 
-| Command | Description |
-|---------|-------------|
-| `yarn dev` | Development build |
-| `yarn dev:watch` | Development build with file watching |
-| `yarn prod` | Production build (minified) |
-| `yarn build` | Full build with typecheck, lint, format, and tests |
-| `yarn ci` | Install dependencies with a frozen lockfile |
-| `yarn typecheck` | TypeScript type checking |
-| `yarn lint` | ESLint code checking |
-| `yarn format` | Prettier code formatting |
-| `yarn test` | Run Jest tests |
-| `yarn test:dev` | Build and run tests |
-| `yarn coverage` | Run tests with coverage report |
+| Command          | Description                                        |
+| ---------------- | -------------------------------------------------- |
+| `yarn dev`       | Development build                                  |
+| `yarn dev:watch` | Development build with file watching               |
+| `yarn prod`      | Production build (minified)                        |
+| `yarn build`     | Full build with typecheck, lint, format, and tests |
+| `yarn ci`        | Install dependencies with a frozen lockfile        |
+| `yarn typecheck` | TypeScript type checking                           |
+| `yarn lint`      | ESLint code checking                               |
+| `yarn format`    | Prettier code formatting                           |
+| `yarn test`      | Run Jest tests                                     |
+| `yarn test:dev`  | Build and run tests                                |
+| `yarn coverage`  | Run tests with coverage report                     |
 
 ### Release Process
 
@@ -118,25 +119,28 @@ direnv allow
 ## CI/CD Workflows
 
 ### build.yml
+
 Triggers on push to main and PRs. Runs typecheck, lint, format check, build, and tests.
 
 ### publish.yml
+
 Triggers on tag push. Builds the plugin and creates a draft GitHub release with `main.js`, `manifest.json`, `styles.css`, and archives.
 
 ### junie.yml
+
 Integration for JetBrains Junie AI assistant. Remove if not using Junie.
 
 ## Placeholders Reference
 
-| Placeholder | Description | Files |
-|-------------|-------------|-------|
-| `{{PLUGIN_ID}}` | Plugin identifier | package.json, manifest.json, publish.yml, PLUGIN_README.md |
-| `{{PLUGIN_NAME}}` | Human-readable name | manifest.json, PLUGIN_README.md |
-| `{{PLUGIN_DESCRIPTION}}` | Short description | package.json, manifest.json, PLUGIN_README.md |
-| `{{PLUGIN_PREFIX}}` | CSS class prefix | CLAUDE.md, src/styles.src.css |
-| `{{AUTHOR}}` | Author's name | package.json, manifest.json, LICENSE |
-| `{{AUTHOR_URL}}` | Author's URL | manifest.json |
-| `{{YEAR}}` | Copyright year | LICENSE |
+| Placeholder              | Description         | Files                                                      |
+| ------------------------ | ------------------- | ---------------------------------------------------------- |
+| `{{PLUGIN_ID}}`          | Plugin identifier   | package.json, manifest.json, publish.yml, PLUGIN_README.md |
+| `{{PLUGIN_NAME}}`        | Human-readable name | manifest.json, PLUGIN_README.md                            |
+| `{{PLUGIN_DESCRIPTION}}` | Short description   | package.json, manifest.json, PLUGIN_README.md              |
+| `{{PLUGIN_PREFIX}}`      | CSS class prefix    | CLAUDE.md, src/styles.src.css                              |
+| `{{AUTHOR}}`             | Author's name       | package.json, manifest.json, LICENSE                       |
+| `{{AUTHOR_URL}}`         | Author's URL        | manifest.json                                              |
+| `{{YEAR}}`               | Copyright year      | LICENSE                                                    |
 
 ## License
 

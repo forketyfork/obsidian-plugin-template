@@ -64,18 +64,18 @@ yarn build
 
 ### Available Commands
 
-| Command | Description |
-|---------|-------------|
-| `yarn dev` | Development build |
-| `yarn dev:watch` | Development build with file watching |
-| `yarn prod` | Production build (minified) |
-| `yarn build` | Full build with typecheck, lint, format, and tests |
-| `yarn typecheck` | TypeScript type checking |
-| `yarn lint` | ESLint code checking |
-| `yarn format` | Prettier code formatting |
-| `yarn test` | Run Jest tests |
-| `yarn test:dev` | Build and run tests |
-| `yarn coverage` | Run tests with coverage report |
+| Command          | Description                                        |
+| ---------------- | -------------------------------------------------- |
+| `yarn dev`       | Development build                                  |
+| `yarn dev:watch` | Development build with file watching               |
+| `yarn prod`      | Production build (minified)                        |
+| `yarn build`     | Full build with typecheck, lint, format, and tests |
+| `yarn typecheck` | TypeScript type checking                           |
+| `yarn lint`      | ESLint code checking                               |
+| `yarn format`    | Prettier code formatting                           |
+| `yarn test`      | Run Jest tests                                     |
+| `yarn test:dev`  | Build and run tests                                |
+| `yarn coverage`  | Run tests with coverage report                     |
 
 ### Project Structure
 
