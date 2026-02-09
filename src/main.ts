@@ -4,6 +4,7 @@ import { Plugin } from "obsidian";
 // import { MyPluginSettingTab } from "./SettingTab";
 
 // TODO: Define your plugin settings interface
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface MyPluginSettings {
 	// Add your settings here
 }
@@ -34,7 +35,7 @@ export default class MyPlugin extends Plugin {
 	}
 
 	async loadSettings(): Promise<void> {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+		this.settings = Object.assign({}, DEFAULT_SETTINGS, (await this.loadData()) as MyPluginSettings);
 	}
 
 	async saveSettings(): Promise<void> {
