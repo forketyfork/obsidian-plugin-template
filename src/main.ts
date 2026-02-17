@@ -4,7 +4,7 @@ import { Plugin } from "obsidian";
 // import { MyPluginSettingTab } from "./SettingTab";
 
 // TODO: Define your plugin settings interface
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type, obsidianmd/sample-names
 interface MyPluginSettings {
 	// Add your settings here
 }
@@ -14,6 +14,7 @@ const DEFAULT_SETTINGS: MyPluginSettings = {
 	// Add default values here
 };
 
+// eslint-disable-next-line obsidianmd/sample-names -- template placeholder
 export default class MyPlugin extends Plugin {
 	settings: MyPluginSettings = DEFAULT_SETTINGS;
 
