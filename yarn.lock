@@ -5774,9 +5774,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"obsidian-something@workspace:.":
+"obsidian-{{PLUGIN_ID}}@workspace:.":
   version: 0.0.0-use.local
-  resolution: "obsidian-something@workspace:."
+  resolution: "obsidian-{{PLUGIN_ID}}@workspace:."
   dependencies:
     "@codemirror/state": "npm:6.6.0"
     "@codemirror/view": "npm:6.41.0"
