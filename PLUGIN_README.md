@@ -50,32 +50,32 @@ direnv allow
 
 ```bash
 # Install dependencies
-yarn install
+pnpm install
 
 # Development build
-yarn dev
+pnpm dev
 
 # Development build with watch mode
-yarn dev:watch
+pnpm dev:watch
 
 # Full production build (includes typecheck, lint, format, and tests)
-yarn build
+pnpm build
 ```
 
 ### Available Commands
 
 | Command          | Description                                        |
 | ---------------- | -------------------------------------------------- |
-| `yarn dev`       | Development build                                  |
-| `yarn dev:watch` | Development build with file watching               |
-| `yarn prod`      | Production build (minified)                        |
-| `yarn build`     | Full build with typecheck, lint, format, and tests |
-| `yarn typecheck` | TypeScript type checking                           |
-| `yarn lint`      | ESLint code checking                               |
-| `yarn format`    | Prettier code formatting                           |
-| `yarn test`      | Run Jest tests                                     |
-| `yarn test:dev`  | Build and run tests                                |
-| `yarn coverage`  | Run tests with coverage report                     |
+| `pnpm dev`       | Development build                                  |
+| `pnpm dev:watch` | Development build with file watching               |
+| `pnpm prod`      | Production build (minified)                        |
+| `pnpm build`     | Full build with typecheck, lint, format, and tests |
+| `pnpm typecheck` | TypeScript type checking                           |
+| `pnpm lint`      | ESLint code checking                               |
+| `pnpm format`    | Prettier code formatting                           |
+| `pnpm test`      | Run Jest tests                                     |
+| `pnpm test:dev`  | Build and run tests                                |
+| `pnpm coverage`  | Run tests with coverage report                     |
 
 ### Project Structure
 

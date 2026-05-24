@@ -49,8 +49,8 @@ The script prompts for:
 ```bash
 rm setup.sh README.md
 mv PLUGIN_README.md README.md
-yarn install
-yarn dev
+pnpm install
+pnpm dev
 git init && git add . && git commit -m 'Initial commit'
 ```
 
@@ -83,7 +83,7 @@ git init && git add . && git commit -m 'Initial commit'
 ### Prerequisites
 
 - Node.js 24.x
-- Yarn package manager
+- pnpm package manager
 
 Or use Nix:
 
@@ -97,21 +97,21 @@ direnv allow
 
 | Command          | Description                                        |
 | ---------------- | -------------------------------------------------- |
-| `yarn dev`       | Development build                                  |
-| `yarn dev:watch` | Development build with file watching               |
-| `yarn prod`      | Production build (minified)                        |
-| `yarn build`     | Full build with typecheck, lint, format, and tests |
-| `yarn ci`        | Install dependencies with a frozen lockfile        |
-| `yarn typecheck` | TypeScript type checking                           |
-| `yarn lint`      | ESLint code checking                               |
-| `yarn format`    | Prettier code formatting                           |
-| `yarn test`      | Run Jest tests                                     |
-| `yarn test:dev`  | Build and run tests                                |
-| `yarn coverage`  | Run tests with coverage report                     |
+| `pnpm dev`       | Development build                                  |
+| `pnpm dev:watch` | Development build with file watching               |
+| `pnpm prod`      | Production build (minified)                        |
+| `pnpm build`     | Full build with typecheck, lint, format, and tests |
+| `pnpm ci`        | Install dependencies with a frozen lockfile        |
+| `pnpm typecheck` | TypeScript type checking                           |
+| `pnpm lint`      | ESLint code checking                               |
+| `pnpm format`    | Prettier code formatting                           |
+| `pnpm test`      | Run Jest tests                                     |
+| `pnpm test:dev`  | Build and run tests                                |
+| `pnpm coverage`  | Run tests with coverage report                     |
 
 ### Release Process
 
-1. Update version: `yarn version --immediate <patch|minor|major|version>` then `yarn run version`
+1. Update version: `npm version --no-git-tag-version <patch|minor|major|version>` then `pnpm run version`
 2. Commit and push to a release branch
 3. Create a tag matching the version
 4. GitHub Actions creates a draft release with artifacts
