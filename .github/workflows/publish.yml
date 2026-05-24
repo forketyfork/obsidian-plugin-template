@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
+      attestations: write
+      artifact-metadata: write
     steps:
       - uses: actions/checkout@v6
       - name: Install pnpm
@@ -31,21 +34,20 @@ jobs:
             git status --porcelain
             exit 1
           fi
-      - name: Create plugin archives
-        run: |
-          PLUGIN_NAME="obsidian-{{PLUGIN_ID}}"
-          mkdir -p "$PLUGIN_NAME"
-          cp main.js manifest.json styles.css "$PLUGIN_NAME/"
-          zip -r "$PLUGIN_NAME.zip" "$PLUGIN_NAME/"
-          tar -czf "$PLUGIN_NAME.tar.gz" "$PLUGIN_NAME/"
+      - name: Attest build provenance
+        uses: actions/attest@v4
+        with:
+          subject-path: |
+            main.js
+            manifest.json
+            styles.css
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           tag="${GITHUB_REF#refs/tags/}"
-          PLUGIN_NAME="obsidian-{{PLUGIN_ID}}"
 
           gh release create "$tag" \
             --title="$tag" \
             --draft \
-            main.js manifest.json styles.css "$PLUGIN_NAME.zip" "$PLUGIN_NAME.tar.gz"
+            main.js manifest.json styles.css
