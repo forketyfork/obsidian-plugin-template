@@ -7,6 +7,7 @@ A template for creating Obsidian plugins with modern tooling and best practices.
 - **TypeScript** with strict mode enabled
 - **esbuild** for fast builds
 - **ESLint** with flat config format
+- **Stylelint** for CSS linting with Obsidian configuration
 - **Prettier** for code formatting
 - **Jest** for testing with ts-jest
 - **Nix flakes** for reproducible development environment
@@ -104,6 +105,7 @@ direnv allow
 | `pnpm ci`        | Install dependencies with a frozen lockfile        |
 | `pnpm typecheck` | TypeScript type checking                           |
 | `pnpm lint`      | ESLint code checking                               |
+| `pnpm lint:css`  | Stylelint CSS code checking                        |
 | `pnpm format`    | Prettier code formatting                           |
 | `pnpm test`      | Run Jest tests                                     |
 | `pnpm test:dev`  | Build and run tests                                |

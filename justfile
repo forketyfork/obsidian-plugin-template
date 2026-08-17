@@ -55,6 +55,10 @@ coverage:
 lint:
     pnpm lint
 
+# Run Stylelint on CSS sources
+lint-css:
+    pnpm lint:css
+
 # Format code with Prettier
 format:
     pnpm format

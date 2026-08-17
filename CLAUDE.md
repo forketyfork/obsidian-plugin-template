@@ -20,6 +20,7 @@ If you're using the Nix development environment (via `nix develop` or direnv), u
 - `just typecheck` - TypeScript typecheck
 - `just format` - Format code with Prettier
 - `just lint` - Check code style with ESLint
+- `just lint-css` - Check CSS code style with Stylelint
 - `just test` - Run Jest tests
 - `just test-dev` - Run development build and then tests
 - `just test-watch` - Run development build and then tests in watch mode
@@ -39,6 +40,7 @@ If you're using the Nix development environment (via `nix develop` or direnv), u
 - `pnpm typecheck` — TypeScript typecheck
 - `pnpm format` - Format code with Prettier
 - `pnpm lint` - Check code style with ESLint
+- `pnpm lint:css` - Check CSS code style with Stylelint
 - `pnpm test` - Run Jest tests
 - `pnpm test:dev` - Run development build and then tests
 - `pnpm test:watch` - Run development build and then tests in watch mode
