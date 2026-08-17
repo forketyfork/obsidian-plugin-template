@@ -72,6 +72,7 @@ pnpm build
 | `pnpm build`     | Full build with typecheck, lint, format, and tests |
 | `pnpm typecheck` | TypeScript type checking                           |
 | `pnpm lint`      | ESLint code checking                               |
+| `pnpm lint:css`  | Stylelint CSS code checking                        |
 | `pnpm format`    | Prettier code formatting                           |
 | `pnpm test`      | Run Jest tests                                     |
 | `pnpm test:dev`  | Build and run tests                                |
